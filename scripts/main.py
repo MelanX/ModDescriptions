@@ -67,7 +67,8 @@ def update_desc(path, mod):
 
 def something_changed(path):
     with open('latest.txt', 'r', encoding='utf-8') as f:
-        cmd = f'git diff --name-only {f.readline().rstrip("\n")} -- {path} assets/important_notes.md'
+        hash = f.readline().rstrip("\n")
+        cmd = f'git diff --name-only {hash} -- {path} assets/important_notes.md'
         result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE)
         changed_files = result.stdout.decode().splitlines()
 
