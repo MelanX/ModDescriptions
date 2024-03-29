@@ -5,11 +5,10 @@ import requests
 
 from util import get_data, get_default_slug
 
-BASE_URL = 'https://assets.melanx.de/data/'
+BASE_URL = 'https://raw.githubusercontent.com/MelanX/ModDescriptions/HEAD/'
 MODRINTH_URL = 'https://modrinth.com/mod/'
 CURSEFORGE_URL = 'https://www.curseforge.com/minecraft/mc-mods/'
 DIR = 'assets/mods/'
-GITHUB_URL = 'https://raw.githubusercontent.com/MelanX/ModDescriptions/HEAD/'
 
 MODRINTH_API = 'https://api.modrinth.com/v2/project/'
 
@@ -61,7 +60,7 @@ def update_desc(path, mod):
         print('✔️ Example Recipes')
 
     print('✔️ Full Desc')
-    # update_modrinth_desc(mod, content)
+    update_modrinth_desc(mod, content)
 
 
 def something_changed(path):
@@ -85,6 +84,7 @@ def main():
         update_desc(path, mod)
 
         print(f'✔️ Finished {mod["name"]}\n')
+        return
 
 
 def important_information(content: str):
