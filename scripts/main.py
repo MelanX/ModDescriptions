@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 
 import requests
@@ -21,6 +22,7 @@ def update_logo(path, mod):
         print('Logo ❌')
         return
 
+    # todo implement updating on Modrinth and CurseForge
     print('✔️ Logo')
 
 
@@ -64,7 +66,12 @@ def update_desc(path, mod):
 
 
 def something_changed(path):
-    return True  # todo
+    with open('latest.txt', 'r', encoding='utf-8') as f:
+        cmd = f'git diff --name-only {f.readline().rstrip('\n')} -- {path} assets/important_notes.md'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE)
+        changed_files = result.stdout.decode().splitlines()
+
+    return len(changed_files) > 0
 
 
 def main():
@@ -77,14 +84,13 @@ def main():
             continue
 
         if not something_changed(path):
-            print('No changed detected. Skipping.\n')
+            print('❌❌❌ No changes detected. Skipping. ❌❌❌\n')
             continue
 
         update_logo(path, mod)
         update_desc(path, mod)
 
         print(f'✔️ Finished {mod["name"]}\n')
-        return
 
 
 def important_information(content: str):

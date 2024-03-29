@@ -1,8 +1,8 @@
-assets/modpacks/cavestone/BH_CS_Discord.png
-assets/modpacks/cavestone/BH_CS_Header.png
-assets/modpacks/cavestone/BH_CS_Logo.png
-assets/modpacks/cavestone/BH_CS_Overview.png
-assets/modpacks/cavestone/BH_CS_PromoCard.png
+assets/modpacks/cavestone/discord.png
+assets/modpacks/cavestone/header.png
+assets/modpacks/cavestone/logo.png
+assets/modpacks/cavestone/overview.png
+assets/modpacks/cavestone/promo.png
 assets/mods/aiot-botania/header.png
 assets/mods/aiot-botania/logo.png
 assets/mods/aiot-botania/overview.png
