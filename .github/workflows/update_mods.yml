@@ -1,0 +1,16 @@
+name: 'Update mods'
+on: push
+
+jobs:
+  update:
+    if: startsWith(github.repository, 'MelanX/') # don't run this in forks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        run: sudo apt-get install -y python3
+
+      - name: Update descriptions
+        run: python scripts/main.py ${{ secrets.MODRINTH_TOKEN }}
