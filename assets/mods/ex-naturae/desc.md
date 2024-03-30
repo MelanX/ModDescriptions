@@ -11,5 +11,3 @@ The Elementium Hammer spawns pixies to protect you from nearby monsters. The ran
 The Terrasteel Hammer has a higher range while breaking and benefits from Ring of Thor. <br>
 The Dreamwood Crook will also have a chance to still drop saplings when breaking leaves.<br>
 This mod is compatible with Ex Compressum and adds compressed variants of the hammers and crooks when loaded.<br>
-
-{promo.png}

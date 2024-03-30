@@ -4,7 +4,7 @@ This mod is the successor of [Vanilla Hammers]({mod_hoster}vanilla-hammers) and
 [Vanilla Excavators]({mod_hoster}vanilla-excavators) for Forge on 1.19+. It could be combined with
 [MoreVanillaLib]({mod_hoster}morevanillalib) to have some special effects for most of the tools.
 
-{overview.png}
+{getting_started.png}
 
 Hammers will mine like a pickaxe, but in a 3x3 area.
 
