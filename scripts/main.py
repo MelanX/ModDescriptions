@@ -1,28 +1,28 @@
 import os
 import subprocess
-import sys
 
-import requests
-
+from scripts.curseforge import update_curseforge_desc
+from scripts.modrinth import update_modrinth_desc, update_modrinth_logo
 from util import get_data, get_default_slug
 
 BASE_URL = 'https://raw.githubusercontent.com/MelanX/ModDescriptions/HEAD/'
-MODRINTH_URL = 'https://modrinth.com/mod/'
-CURSEFORGE_URL = 'https://www.curseforge.com/minecraft/mc-mods/'
 DIR = 'assets/mods/'
-
-MODRINTH_API = 'https://api.modrinth.com/v2/project/'
-
-MODRINTH_TOKEN = sys.argv[1]
 
 
 def update_logo(path, mod):
     logo = os.path.join(path, 'logo.png')
     if not os.path.exists(logo):
-        print('Logo ❌')
+        logo = os.path.join(path, 'logo.gif')
+        if not os.path.exists(logo):
+            print('❌ Logo')
+            return
+
+    if not logo_changed(logo):
+        print('❌ Logo didn\'t change. Skipping.')
         return
 
-    # todo implement updating on Modrinth and CurseForge
+    update_modrinth_logo(logo, mod)
+    # update_curseforge_logo(logo, mod) todo
     print('✔️ Logo')
 
 
@@ -49,7 +49,7 @@ def update_desc(path, mod):
             title = image.rsplit(".", 1)[0].replace("_", " ").title()
             old = content
             content = content.replace('{' + image + '}', f'![{title}]' +
-                                                         f'({image_url(path, image)})')
+                                      f'({image_url(path, image)})')
             if old is not content:
                 print(f'✔️ {title}')
     recipes = os.path.join(path, 'recipes')
@@ -63,12 +63,23 @@ def update_desc(path, mod):
 
     print('✔️ Full Desc')
     update_modrinth_desc(mod, content)
+    # update_curseforge_desc(mod, content) todo
 
 
 def something_changed(path):
     with open('latest.txt', 'r', encoding='utf-8') as f:
         hash = f.readline().rstrip("\n")
         cmd = f'git diff --name-only {hash} -- {path} assets/important_notes.md'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE)
+        changed_files = result.stdout.decode().splitlines()
+
+    return len(changed_files) > 0
+
+
+def logo_changed(path):
+    with open('latest.txt', 'r', encoding='utf-8') as f:
+        hash = f.readline().rstrip("\n")
+        cmd = f'git diff --name-only {hash} -- {path}'
         result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE)
         changed_files = result.stdout.decode().splitlines()
 
@@ -119,21 +130,6 @@ def image_url(path, file):
             return BASE_URL + full_path
 
     return None
-
-
-def update_modrinth_desc(mod, content):
-    if 'mr_id' not in mod:
-        print('❌ Mod not available on Modrinth')
-        return
-
-    content = content.replace('{mod_hoster}', MODRINTH_URL, -1)
-    url = MODRINTH_API + mod['mr_id']
-    headers = {'Authorization': MODRINTH_TOKEN, 'Content-Type': 'application/json'}
-    response = requests.patch(url, json={'body': content}, headers=headers)
-    if response.status_code == 204:
-        print('✔️ Successfully updated Modrinth description')
-    else:
-        print('❌ Error updating Modrinth description: ' + response.text)
 
 
 if __name__ == '__main__':
