@@ -23,7 +23,7 @@ def update_modrinth_desc(mod, content):
 
     content = content.replace('{mod_hoster}', MOD_PAGE, -1)
     url = PROJECT_API + mod['mr_id']
-    headers = {'Authorization': MODRINTH_TOKEN, 'Content-Type': 'application/json'}
+    headers = {'Authorization': MODRINTH_TOKEN, 'User-Agent': 'GitHub@MelanX/ModDescriptions', 'Content-Type': 'application/json'}
     response = requests.patch(url, json={'body': content}, headers=headers)
     if response.status_code == 204:
         print('✔️ Successfully updated Modrinth description')
@@ -44,7 +44,7 @@ def update_modrinth_logo(logo, mod):
 
     url = PROJECT_API + mod['mr_id'] + '/icon'
     params = {'ext': file_type}
-    headers = {'Authorization': MODRINTH_TOKEN, 'Content-Type': 'image/' + file_type}
+    headers = {'Authorization': MODRINTH_TOKEN, 'User-Agent': 'GitHub@MelanX/ModDescriptions', 'Content-Type': 'image/' + file_type}
 
     response = requests.patch(url, params=params, data=data, headers=headers)
 
