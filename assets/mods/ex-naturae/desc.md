@@ -1,8 +1,6 @@
 {header.png}
 
-### **Ex Naturae** combines [Botania]({mod_hoster}botania) and [Ex Nihilo: Sequentia](https://www.curseforge.com/minecraft/mc-mods/ex-nihilo-sequentia)
-
-*(both required, Ex Nihilo unfortunally not on Modrinth yet)*
+### **Ex Naturae** combines [Botania]({mod_hoster}botania) and [Ex Nihilo: Sequentia]({mod_hoster}exnihilosequentia)
 
 {overview.png}
 
