@@ -1,8 +1,8 @@
 import os
 import subprocess
 
-from scripts.curseforge import update_curseforge_desc
-from scripts.modrinth import update_modrinth_desc, update_modrinth_logo
+from curseforge import update_curseforge_desc
+from modrinth import update_modrinth_desc, update_modrinth_logo
 from util import get_data, get_default_slug
 
 BASE_URL = 'https://raw.githubusercontent.com/MelanX/ModDescriptions/HEAD/'
