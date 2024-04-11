@@ -11,7 +11,7 @@ This mod is required on server and client side. It adds a "Skyblock" world type 
 creating a new world on client side.
 
 For servers, use `skyblockbuilder:custom_skyblock` (1.18+: `skyblockbuilder:skyblock`) as world type in 
-server.properties or in forge-common.toml (config).
+server.properties or in forge-common.toml (config, was removed in 1.19).
 <br><br>
 This mod requires [LibX]({mod_hoster}libx).
 
