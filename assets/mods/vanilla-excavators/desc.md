@@ -15,5 +15,3 @@ This mod was originally made by [Draylar for Fabric](https://www.curseforge.com/
 
 - [MoreVanillaLib]({mod_hoster}morevanillalib) (adds a config)
 - [LibX]({mod_hoster}libx)
-
-{promo.png}
