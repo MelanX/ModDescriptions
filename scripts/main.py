@@ -92,17 +92,20 @@ def main():
         print(f'🔄️ Updating project pages for {mod["name"]}.')
         path = os.path.join(DIR, slug)
         if not os.path.exists(path):
-            print(f'❌❌❌ No assets found. Skipping. ❌❌❌\n')
+            print(f'❌❌❌ No assets found. Skipping. ❌❌❌')
+            print()
             continue
 
         if not something_changed(path):
-            print('❌❌❌ No changes detected. Skipping. ❌❌❌\n')
+            print('❌❌❌ No changes detected. Skipping. ❌❌❌')
+            print()
             continue
 
         update_logo(path, mod)
         update_desc(path, mod)
 
-        print(f'✔️ Finished {mod["name"]}\n')
+        print(f'✔️ Finished {mod["name"]}')
+        print()
 
 
 def important_information(content: str):
