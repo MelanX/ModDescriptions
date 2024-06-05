@@ -3,6 +3,7 @@ assets/modpacks/cavestone/header.png
 assets/modpacks/cavestone/logo.png
 assets/modpacks/cavestone/overview.png
 assets/modpacks/cavestone/promo.png
+assets/modpacks/cavestone/server.png
 assets/mods/aiot-botania/header.png
 assets/mods/aiot-botania/logo.png
 assets/mods/aiot-botania/overview.png
