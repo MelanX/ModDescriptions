@@ -3,6 +3,8 @@ import sys
 
 import requests
 
+from scripts import util
+
 MOD_PAGE = 'https://modrinth.com/mod/'
 PROJECT_API = 'https://api.modrinth.com/v2/project/'
 MODRINTH_TOKEN = sys.argv[1]
@@ -24,7 +26,14 @@ def update_modrinth_desc(mod, content):
     content = content.replace('{mod_hoster}', MOD_PAGE, -1)
     url = PROJECT_API + mod['mr_id']
     headers = {'Authorization': MODRINTH_TOKEN, 'User-Agent': 'GitHub@MelanX/ModDescriptions', 'Content-Type': 'application/json'}
-    response = requests.patch(url, json={'body': content}, headers=headers)
+    projects_data = util.get_data()
+    response = requests.patch(url, json={
+        'body': content,
+        'wiki_url': projects_data['wiki_url'],
+        'source_url': projects_data['github']['base_url'] + projects_data['github'],
+        'issues_url': projects_data['github']['base_url'] + projects_data['github'] + '/issues',
+        'discord_url': projects_data['discord_invite']
+    }, headers=headers)
     if response.status_code == 204:
         print('✔️ Successfully updated Modrinth description')
     else:

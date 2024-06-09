@@ -1,5 +1,5 @@
 {
-  "wiki_url": "https://melanx.github.io/Mod-Wikis/",
+  "wiki_url": "https://wiki.chaotictrials.de/",
   "github": {
     "base_url": "https://github.com/",
     "badge_url": "https://img.shields.io/github/issues-raw/{}?style=flat-square"
@@ -12,6 +12,7 @@
     "base_url": "https://modrinth.com/mod/",
     "badge_url": "https://img.shields.io/modrinth/dt/{}?color=00AF5C&label=%E3%85%A4&logo=modrinth&style=flat-square"
   },
+  "discord_invite": "https://melanx.de/discord",
   "projects": [
     {
       "name": "AIOT Botania",
