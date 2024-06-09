@@ -3,7 +3,7 @@ import sys
 
 import requests
 
-from scripts import util
+import util
 
 MOD_PAGE = 'https://modrinth.com/mod/'
 PROJECT_API = 'https://api.modrinth.com/v2/project/'
